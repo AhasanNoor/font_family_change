@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!-- Custom CSS Link -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Diplomata+SC" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Jim+Nightshade" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Griffy" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+  </head>
+  <body>
+
+  	 <!-- Changing Font Family with JQuery -->
+  	 <section id="font_family">
+  	 	<div class="container">
+  	 		<div class="row">
+  	 			<div class="col-md-12 col-sm-12 col-xs-12">
+  	 				<div class="main_body">
+  	 					<div class="drop_down text-center">
+  	 						<select>
+							  <option value="Diplomata SC">Diplomata SC</option>
+							  <option value="Jim Nightshade">Jim Nightshade</option>
+							  <option value="Griffy">Griffy</option>
+							  <option value="Indie Flower">Indie Flower</option>
+							</select>
+  	 					</div>
+  	 					<div class="text text-center" style="text-align: justify;">
+  	 						<h1 class="text-center">What is Lorem Ipsum?</h1>
+  	 						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem IpsumLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem IpsumLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+  	 					</div>
+  	 				</div>
+  	 			</div>
+  	 		</div>
+  	 	</div>
+  	 </section>
+
+  	 <!-- Question And Answer section -->
+  	 <section id="Form_section">
+  	 	<div class="container">
+  	 		<div class="row">
+  	 			<div class="col-md-12 col-sm-12 col-xs-12">
+  	 				<div class="From">
+  	 					<div class="input-group">
+  	 						<div class="heading">
+  	 							<h3>Chose the Correct answer:</h3>
+  	 						</div>
+  	 						<div class="body">
+	  	 						<h4>1) What is your name?</h4>	
+							     <p>
+							       <input type="radio" name="same_one"  value="x" id="radio_input_right">
+							        My name is ahasan.
+							     </p>	
+							     <p>
+							       <input type="radio" name="same_one"  value="y" id="radio_input_wrong">
+							        My name is not ahasan.
+							     </p>
+						     </div>
+  	 						<div class="body">
+	  	 						<h4>1) What is your name?</h4>	
+							     <p>
+							       <input type="radio" name="same_two"  value="x" id="radio_input_right">
+							        My name is ahasan.
+							     </p>	
+							     <p>
+							       <input type="radio" name="same_two"  value="y" id="radio_input_wrong">
+							        My name is not ahasan.
+							     </p>
+						     </div>
+						     <div class="button">
+						     	<input type="button" id="check" value="Answer">
+						     	<input type="button" id="clear" value="Clear">
+						     </div>
+						     <div class="result">
+						     	<h2 id="Result"></h2>
+						     </div>
+						     <p></p>
+					    </div>
+    				</div>	
+  	 			</div>
+  	 		</div>
+  	 	</div>
+  	 </section>
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+
+	<script>
+
+		// Changing Font Family
+		$(function(){
+			$(".text").css("font-family","Diplomata SC");
+			$("select").change(function(){
+				var f=$("select").val();
+				$(".text").css("font-family",f);
+			})
+			
+
+		})
+
+		// Question And Answer Form_section
+		$(function () {
+			
+			$("#Result").click(function(){
+				if(!$("input[@name=same_one]:checked").val()||!$("input[@name=same_two]:checked").val())
+				{
+					$("p").text("You're not done yet!");
+				}
+				else{
+					var same_one=$("input[@name=same_one]:checked").val();
+					var same_two=$("input[@name=same_two]:checked").val();
+				}
+			})
+		})
+
+
+
+	</script>
+  </body>
+</html>
